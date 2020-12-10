@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import handleSaveQuestionAnswer from '../actions/users';
 
 export class Question extends Component {
-    state ={
+    state = {
         value: ''
     };
 

@@ -6,6 +6,7 @@ import Question from './Question';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Teaser from './Teaser';
+import QuestionStat from './QuestionStat';
 
 const cardTypes = {
     QUESTION: 'QUESTION',
@@ -32,12 +33,12 @@ export class Card extends Component {
             <div>
                 <Segment.Group>
                         <Header as="h4" textAlign="left" block>
-                            {question.name} asks:
+                            {question.author} asks:
                         </Header>
                         <Grid>
                             <Grid.Row>
                                 <Grid.Column width={5}>
-                                    <Image src="Lauren.png"/>
+                                    <Image src={`${question.author}.png`}/>
                                 </Grid.Column>
                                 <Grid.Column width={10}>
                                     {cardType === cardTypes.QUESTION && <Question question={question}/>}

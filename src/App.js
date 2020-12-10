@@ -7,6 +7,8 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
 import { Question } from './components/Question';
+import { Card } from './components/Card';
+import { QuestionStat } from './components/QuestionStat';
 
 
 class App extends Component {
@@ -14,7 +16,7 @@ class App extends Component {
     this.props.handleInitialData();
   }
   render() {
-    const { authUser } = this.props;
+    const { authUser, question } = this.props;
     return (
       <Router>
         <div className="App" style={{ maxWidth: 550, textAlign: "center" }}>
@@ -30,6 +32,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/question" component={Question} />
+                <Route path="/questions/:question_id" render={() => <QuestionStat question={question}/>}/>
               </Switch>
           </Fragment>
           )}
@@ -40,11 +43,13 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authUser }) {
-  return {
-    authUser
-  };
-}
+function mapStateToProps(
+  { authUser }
+) {
+    return {
+        authUser
+    };
+};
 
 export default connect(
   mapStateToProps,

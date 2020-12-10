@@ -111,7 +111,7 @@ let users = {
     },
     loxhs1bqm25b708cmbf3g: {
       id: 'loxhs1bqm25b708cmbf3g',
-      author: 'Andrew Satish',
+      author: 'Andrew-Satish',
       timestamp: 1482579767190,
       optionOne: {
         votes: [],

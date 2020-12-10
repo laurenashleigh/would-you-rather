@@ -23,8 +23,8 @@ export class Login extends Component {
         return (
             <Fragment>
                <Header as="h4" block color="teal" textAlign="center">
-                   <Header.Content>Let's Play Would You Rather!</Header.Content>
-                   <Header.Subheader>Please choose your avatar to continue</Header.Subheader>
+                   <Header.Content>Welcome to the game!</Header.Content>
+                   <Header.Subheader>Pick an avatar to continue</Header.Subheader>
                 </Header>
                 <div>
                     <Grid padded textAlign="center">

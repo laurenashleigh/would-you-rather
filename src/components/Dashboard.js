@@ -24,7 +24,7 @@ const panes = (props) => {
     
     return [
         {
-            menuItem: 'Unanswered',
+            menuItem: 'Answered',
             render: () => (
                 <Tab.Pane>
                     {userQuestionData.answered.map(question => (
@@ -34,7 +34,7 @@ const panes = (props) => {
             )
         },
         {
-            menuItem: 'Answered',
+            menuItem: 'Unanswered',
             render: () => (
                 <Tab.Pane>
                     {userQuestionData.unanswered.map(question => (
@@ -45,11 +45,10 @@ const panes = (props) => {
                         <Grid>
                             <Grid.Row>
                                 <Grid.Column width={5}>
-                                    <Image src="Lauren.png"/>
+                                    <Image src={`${question.author}.png`}/>
                                 </Grid.Column>
                                 <Grid.Column width={10}>
                                 <Question question={question} key={question.id}/>
-                                    <Button size="tiny" fluid content="Results" color="teal"/>
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
