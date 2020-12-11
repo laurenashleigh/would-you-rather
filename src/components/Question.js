@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Form, Header, Radio, Button } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import handleSaveQuestionAnswer from '../actions/users';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export class Question extends Component {
     state = {
@@ -12,16 +14,23 @@ export class Question extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        if (this.state.value !== '') {
-            const { authUser, question, handleSaveQuestionAnswer } = this.props;
-            handleSaveQuestionAnswer(authUser, question.id, this.state.value);
-        }
+        const { authUser, question, handleSaveQuestionAnswer } = this.props;
+        const { value } = this.state;
+        const qid = question.id
+        new Promise ((res, rej) => {
+            handleSaveQuestionAnswer(authUser, qid, value);
+            setTimeout(() => res('success', 500));
+        }).then(() => {
+            this.setState({ value: '' })
+        })
+        
+
     };
 
     render() {
         const { question } = this.props;
-        const disabled = this.state.value === '' ? true : false;
-
+        const { value } = this.state;
+        const answered = this.state.value === '' ? false : true;
         return (
             <div>
                 <Header as="h3" >Would you rather</Header>
@@ -35,6 +44,7 @@ export class Question extends Component {
                             label={question.optionOne.text}
                         />
                         <br />
+                        {console.log({value})}
                         <Radio 
                             onChange={this.handleChange}
                             value="optionTwo"
@@ -44,12 +54,15 @@ export class Question extends Component {
                         />
                     </Form.Field>
                     <Form.Field>
-                        <Button 
-                            color="teal"
-                            size="tiny"
-                            disabled={disabled}
-                            content="Submit"
-                        />
+                        <Link to="/">
+                            <Button 
+                                color="teal"
+                                size="tiny"
+                                content="Submit"
+                                onClick={this.handleSubmit}
+                                disabled={!answered}
+                            />
+                        </Link>
                     </Form.Field>
                 </Form>
             </div>

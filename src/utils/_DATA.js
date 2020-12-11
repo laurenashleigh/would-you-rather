@@ -72,10 +72,10 @@ let users = {
   let questions = {
     '8xf0y6ziyjabvozdd253nd': {
       id: '8xf0y6ziyjabvozdd253nd',
-      author: 'Kieren',
+      author: 'Andrew-Satish',
       timestamp: 1467166872634,
       optionOne: {
-        votes: ['lauren'],
+        votes: ['andrewsatish'],
         text: 'have horrible short term memory'
       },
       optionTwo: {
@@ -85,49 +85,49 @@ let users = {
     },
     '6ni6ok3ym7mf1p33lnez': {
       id: '6ni6ok3ym7mf1p33lnez',
-      author: 'Matthew',
+      author: 'Lauren',
       timestamp: 1468479767190,
       optionOne: {
         votes: [],
         text: 'become a superhero'
       },
       optionTwo: {
-        votes: ['ryan', 'mrb'],
+        votes: ['andrewsatish', 'lauren'],
         text: 'become a supervillain'
       }
     },
     am8ehyc8byjqgar0jgpub9: {
       id: 'am8ehyc8byjqgar0jgpub9',
-      author: 'Mr B',
+      author: 'Andrew-Satish',
       timestamp: 1488579767190,
       optionOne: {
         votes: [],
         text: 'be telekinetic'
       },
       optionTwo: {
-        votes: ['lauren'],
+        votes: ['andrewsatish'],
         text: 'be telepathic'
       }
     },
     loxhs1bqm25b708cmbf3g: {
       id: 'loxhs1bqm25b708cmbf3g',
-      author: 'Andrew-Satish',
+      author: 'Karen',
       timestamp: 1482579767190,
       optionOne: {
         votes: [],
         text: 'be a front-end developer'
       },
       optionTwo: {
-        votes: ['james'],
+        votes: ['andrewsatish'],
         text: 'be a back-end developer'
       }
     },
     vthrdm985a262al8qx3do: {
       id: 'vthrdm985a262al8qx3do',
-      author: 'Rebekka',
+      author: 'Karen',
       timestamp: 1489579767190,
       optionOne: {
-        votes: ['kieren'],
+        votes: ['karen'],
         text: 'find $50 yourself'
       },
       optionTwo: {
@@ -137,14 +137,14 @@ let users = {
     },
     xj352vofupe1dqz9emx13r: {
       id: 'xj352vofupe1dqz9emx13r',
-      author: 'Kieren',
+      author: 'Lauren',
       timestamp: 1493579767190,
       optionOne: {
         votes: ['lauren'],
         text: 'write JavaScript'
       },
       optionTwo: {
-        votes: ['matthew'],
+        votes: ['karen'],
         text: 'write Swift'
       }
     }

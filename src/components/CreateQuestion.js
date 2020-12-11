@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleSaveQuestion } from '../actions/questions';
-import { Header, Grid, Segment, Form, Divider } from 'semantic-ui-react';
+import { Header, Grid, Segment, Form, Divider, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 export class CreateQuestion extends Component {
@@ -30,7 +30,6 @@ export class CreateQuestion extends Component {
     }
     
     render() {
-        const formComplete = (this.state.optionOne === '' || this.state.optionTwo === '') ? false : true;
         return (
             <div>
                 <Segment.Group>
@@ -56,7 +55,8 @@ export class CreateQuestion extends Component {
                                     required
                                     />
                                 </div>
-                                <Link to="/" disabled={formComplete}><Form.Button size="tiny" fluid >Submit</Form.Button></Link>
+                                <Form.Button size="tiny" fluid >Submit</Form.Button>
+                                <Link to="/"><Button size="tiny">Back</Button></Link>
                             </Form>
                         </Grid.Column>
                     </Grid>

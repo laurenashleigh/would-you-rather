@@ -11,7 +11,7 @@ export class Leaderboard extends Component {
         return (
             <div>
                 {scoreData.map((user, i) => (
-                    <Segment.Group>
+                    <Segment.Group key={user.id}>
                         <Header as="h4" textAlign="left" block color={cardColour[i]}>{place[i]}</Header>
                         <Grid>
                             <Grid.Row>
@@ -59,7 +59,7 @@ function mapStateToProps(state) {
         asked: user.questions.length,
         score: Object.values(user.answers).length + user.questions.length
     }))
-    .sort((a, b) => a.total - b.total)
+    .sort((a, b) => a.score - b.score)
     .reverse()
     .slice(0, 3);
     return {

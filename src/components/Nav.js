@@ -19,7 +19,7 @@ export class Nav extends Component {
             <Container>
                 <Menu secondary>
                     <Menu.Item name="home" as={NavLink} to="/" exact />
-                    <Menu.Item name="new poll" as={NavLink} to="/new" />
+                    <Menu.Item name="new question" as={NavLink} to="/new" />
                     <Menu.Item name="leaderboard" as={NavLink} to="/leaderboard" />
                     <Menu.Menu position="right">
                         <Menu.Item>

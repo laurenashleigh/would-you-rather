@@ -27,7 +27,7 @@ const panes = (props) => {
             menuItem: 'Answered',
             render: () => (
                 <Tab.Pane>
-                    {userQuestionData.answered.map(question => (
+                    {userQuestionData.unanswered.map(question => (
                         <Card key={question.id} question_id={question.id} unanswered={true}/> 
                     ))}
                 </Tab.Pane>
@@ -37,8 +37,8 @@ const panes = (props) => {
             menuItem: 'Unanswered',
             render: () => (
                 <Tab.Pane>
-                    {userQuestionData.unanswered.map(question => (
-                        <Segment.Group>
+                    {userQuestionData.answered.map(question => (
+                        <Segment.Group key={question.id}>
                         <Header as="h4" textAlign="left" block>
                             {question.author} asks:
                         </Header>

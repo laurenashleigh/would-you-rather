@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import Login from './components/Login';
 import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
-import { Question } from './components/Question';
-import { Card } from './components/Card';
-import { QuestionStat } from './components/QuestionStat';
-import { Leaderboard } from './components/Leaderboard';
-import { CreateQuestion }from './components/CreateQuestion';
+import Question from './components/Question';
+import Card from './components/Card';
+import QuestionStat from './components/QuestionStat';
+import Leaderboard from './components/Leaderboard';
+import CreateQuestion from './components/CreateQuestion';
 
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     this.props.handleInitialData();
   }
   render() {
-    const { authUser, question } = this.props;
+    const { authUser } = this.props;
     return (
       <Router>
         <div className="App" style={{ maxWidth: 550, textAlign: "center" }}>
@@ -34,7 +34,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/question" component={Question} />
-                <Route path="/questions/:question_id" render={() => <QuestionStat question={question}/>}/>
+                <Route path="/questions/:question_id" component={QuestionStat}/>
                 <Route path="/leaderboard" component={Leaderboard}/>
                 <Route path="/new" component={CreateQuestion} />
               </Switch>

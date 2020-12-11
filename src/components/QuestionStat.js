@@ -6,7 +6,11 @@ import { Header, Button, Progress, Grid, Image, Segment } from 'semantic-ui-reac
 export class QuestionStat extends Component {
 
     render() {
-        const { question } = this.props
+        const { question, authUser } = this.props
+        const optionOneVotes = question.optionOne.votes.length
+        const optionTwoVotes = question.optionTwo.votes.length
+        const optionOnePercent = optionOneVotes / (optionOneVotes + optionTwoVotes)
+        const optionTwoPercent = optionTwoVotes / (optionOneVotes + optionTwoVotes)
         return (
             <div>
                 <Header as="h4" textAlign="left" block>
@@ -15,17 +19,23 @@ export class QuestionStat extends Component {
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={5}>
-                            <Image src='/Lauren.png'/>
+                            <Image src={`/${question.author}.png`}/>
                         </Grid.Column>
                         <Grid.Column width={10}>
-                            <Header as="h2">Results</Header>
+                            <Header as="h2">{question.author} asked:</Header>
                             <Segment>
-                                 <p><strong>Option one</strong></p>
-                                <Progress percent={((1/5) * 100).toFixed(2)} progress color="violet"> 1 out of 5 votes</Progress>
+                                {question.optionOne.votes.includes(authUser) &&
+                                    <p>You voted for:</p>
+                                }
+                                 <p><strong>{question.optionOne.text}</strong></p>
+                                <Progress percent={(optionOnePercent * 100).toFixed(2)} progress color="violet"> {optionOneVotes} votes</Progress>
                             </Segment>
                             <Segment>
-                                 <p><strong>Option two</strong></p>
-                                <Progress percent={((4/5) * 100).toFixed(2)} progress color="violet"> 4 out of 5 votes</Progress>
+                                {question.optionTwo.votes.includes(authUser) &&
+                                    <p>You voted for:</p>
+                                }
+                                 <p><strong>{question.optionTwo.text}</strong></p>
+                                <Progress percent={(optionTwoPercent * 100).toFixed(2)} progress color="violet"> {optionTwoVotes} votes </Progress>
                             </Segment>
                             {console.log({question})}
                             <Link to="/"><Button size="tiny">Back</Button></Link>

@@ -26,7 +26,7 @@ export default function handleSaveQuestionAnswer(authUser, qid, answer) {
     dispatch(addAnswerToUser(authUser, qid, answer));
     dispatch(addAnswerToQuestion(authUser, qid, answer));
 
-    return saveQuestionAnswer(authUser, qid, answer)
+    return saveQuestionAnswer({authUser, qid, answer})
   };
 };
 

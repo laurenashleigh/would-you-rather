@@ -43,7 +43,7 @@ export class Card extends Component {
                                 <Grid.Column width={10}>
                                     {cardType === cardTypes.QUESTION && <Question question={question}/>}
                                     {cardType === cardTypes.TEASER && <Teaser question={question}/>}
-                                    {cardType === cardTypes.RESULT && <Question question={question}/>}
+                                    {cardType === cardTypes.RESULT && <QuestionStat question={question}/>}
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
