@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard';
 import { Question } from './components/Question';
 import { Card } from './components/Card';
 import { QuestionStat } from './components/QuestionStat';
+import { Leaderboard } from './components/Leaderboard';
+import { CreateQuestion }from './components/CreateQuestion';
 
 
 class App extends Component {
@@ -33,6 +35,8 @@ class App extends Component {
                 <Route exact path="/" component={Dashboard} />
                 <Route path="/question" component={Question} />
                 <Route path="/questions/:question_id" render={() => <QuestionStat question={question}/>}/>
+                <Route path="/leaderboard" component={Leaderboard}/>
+                <Route path="/new" component={CreateQuestion} />
               </Switch>
           </Fragment>
           )}

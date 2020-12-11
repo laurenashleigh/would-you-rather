@@ -23,7 +23,7 @@ export class Card extends Component {
         question_id: PropTypes.string
       };
     render() {
-        const { question, author, cardType, error } = this.props;
+        const { question, cardType, error } = this.props;
 
         if (error === true) {
             return <Redirect to="/error" />
