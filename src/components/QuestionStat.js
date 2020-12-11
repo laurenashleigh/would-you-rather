@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Header, Button, Progress, Grid, Image, Segment } from 'semantic-ui-react';
+import { Header, Button, Progress, Grid, Image, Segment, Icon } from 'semantic-ui-react';
 
 export class QuestionStat extends Component {
 
@@ -24,15 +24,15 @@ export class QuestionStat extends Component {
                         <Grid.Column width={10}>
                             <Header as="h2">{question.author} asked:</Header>
                             <Segment>
-                                {question.optionOne.votes.includes(authUser) &&
-                                    <p>You voted for:</p>
-                                }
+                                {question.optionOne.votes.includes(authUser) && (
+                                    <p><Icon name="check circle" color="green" size="large"/>You voted for:</p>
+                                )}
                                  <p><strong>{question.optionOne.text}</strong></p>
                                 <Progress percent={(optionOnePercent * 100).toFixed(2)} progress color="violet"> {optionOneVotes} votes</Progress>
                             </Segment>
                             <Segment>
                                 {question.optionTwo.votes.includes(authUser) &&
-                                    <p>You voted for:</p>
+                                    <p><Icon name="check circle" color="green" size="large"/>You voted for:</p>
                                 }
                                  <p><strong>{question.optionTwo.text}</strong></p>
                                 <Progress percent={(optionTwoPercent * 100).toFixed(2)} progress color="violet"> {optionTwoVotes} votes </Progress>

@@ -7,7 +7,6 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
 import Question from './components/Question';
-import Card from './components/Card';
 import QuestionStat from './components/QuestionStat';
 import Leaderboard from './components/Leaderboard';
 import CreateQuestion from './components/CreateQuestion';

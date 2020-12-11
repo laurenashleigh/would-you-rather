@@ -5,7 +5,6 @@ import { setAuthUser } from '../actions/authUser';
 import {
     Container, Menu, Image, Button
 } from 'semantic-ui-react';
-import users from '../utils/_DATA';
 
 export class Nav extends Component {
     handleLogout = e => {

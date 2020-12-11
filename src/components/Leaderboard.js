@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Segment, Header, Grid, Image } from 'semantic-ui-react';
+import { Segment, Header, Grid, Image, Icon } from 'semantic-ui-react';
 
 const cardColour = ['yellow', 'grey', 'brown']
 const place = ["First", "Second","Third"]
@@ -19,8 +19,9 @@ export class Leaderboard extends Component {
                                     <Image src={user.avatarURL}/>
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <Header>{user.name}</Header>
-                                    {console.log({scoreData})}
+                                    <Header>{user.name}{i === 0 &&
+                                        <Icon name="star" color="yellow" />
+                                    }</Header>
                                     <div>
                                         <span>Questions answered: </span>
                                         <span>{user.answered}</span>

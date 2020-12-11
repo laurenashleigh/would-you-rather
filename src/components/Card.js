@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Header, Radio, Button, Grid, Segment, Image } from "semantic-ui-react";
+import { Header, Grid, Segment, Image } from "semantic-ui-react";
 import { connect } from 'react-redux';
-import handleSaveQuestionAnswer from '../actions/users';
 import Question from './Question';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';

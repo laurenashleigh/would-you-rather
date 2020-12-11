@@ -3,7 +3,6 @@ import { Form, Header, Radio, Button } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import handleSaveQuestionAnswer from '../actions/users';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 export class Question extends Component {
     state = {

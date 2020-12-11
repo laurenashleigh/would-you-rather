@@ -20,9 +20,8 @@ export class CreateQuestion extends Component {
 
         const { authUser } = this.props;
         const { optionOne, optionTwo } = this.state;
-        const info = { optionOne, optionTwo, authUser }
         new Promise ((res, rej) => {
-            handleSaveQuestion(info) ;
+            handleSaveQuestion(optionOne, optionTwo, authUser) ;
             setTimeout(() => res('success'), 500);
         }).then(() => {
             this.setState({ optionOne: '', optionTwo: '' })
@@ -30,6 +29,7 @@ export class CreateQuestion extends Component {
     }
     
     render() {
+        const state = this.state
         return (
             <div>
                 <Segment.Group>
@@ -46,16 +46,17 @@ export class CreateQuestion extends Component {
                                         onChange={this.handleChange}
                                         required
                                     />
+                                    {console.log({state})}
                                     <Divider horizontal>Or</Divider>
                                     <Form.Input
-                                    id="optionTwo"
-                                    placeholder="Option two"
-                                    value={this.state.optionTwo}
-                                    onChange={this.handleChange}
-                                    required
+                                        id="optionTwo"
+                                        placeholder="Option two"
+                                        value={this.state.optionTwo}
+                                        onChange={this.handleChange}
+                                        required
                                     />
                                 </div>
-                                <Form.Button size="tiny" fluid >Submit</Form.Button>
+                                <Form.Button size="tiny" fluid color="teal">Submit</Form.Button>
                                 <Link to="/"><Button size="tiny">Back</Button></Link>
                             </Form>
                         </Grid.Column>

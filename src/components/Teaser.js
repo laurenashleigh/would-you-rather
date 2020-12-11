@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Form, Header, Radio, Button } from "semantic-ui-react";
-import { connect } from 'react-redux';
-import handleSaveQuestionAnswer from '../actions/users';
 import { Redirect } from 'react-router-dom';
 
 export class Teaser extends Component {

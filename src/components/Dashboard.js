@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Tab, Header, Grid, Image, Button, Form, Radio } from 'semantic-ui-react';
+import { Segment, Tab, Header, Grid, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Question from '../components/Question';
