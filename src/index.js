@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import { createStore } from 'redux';
+import './index.css';
+import middleware from './middleware';
+import App from './App';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/index';
-import middleware from './middleware';
+
 
 const store = createStore(rootReducer, middleware);
-
-ReactDOM.render(
+const connectedApp = (
   <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider>
+)
+
+ReactDOM.render(
+  connectedApp,
   document.getElementById('root')
 );

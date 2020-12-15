@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import "../App.css"
 import { connect } from 'react-redux';
 import { setAuthUser } from '../actions/authUser';
 import {
@@ -15,7 +16,7 @@ export class Nav extends Component {
         const { authUser, users } = this.props;
 
         return (
-            <Container>
+            <Container className="nav">
                 <Menu secondary>
                     <Menu.Item name="home" as={NavLink} to="/" exact />
                     <Menu.Item name="new question" as={NavLink} to="/new" />
