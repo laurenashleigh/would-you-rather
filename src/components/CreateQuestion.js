@@ -18,7 +18,7 @@ export class CreateQuestion extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        const { authUser } = this.props;
+        const { authUser, handleAddQuestion } = this.props;
         const { optionOne, optionTwo } = this.state;
         new Promise ((res, rej) => {
             handleAddQuestion(optionOne, optionTwo, authUser) ;
