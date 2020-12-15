@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Segment, Tab, Header, Grid, Image } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Question from '../components/Question';
 import Card from '../components/Card';
 
 export class Dashboard extends Component {
-    static propTypes = {userQuestionData: PropTypes.object.isRequired};
     state ={
         value: ''
     };
@@ -14,20 +12,20 @@ export class Dashboard extends Component {
     handleChange = (e, { value }) => this.setState({ value });
 
     render() {
-        const { userQuestionData } = this.props;
-        return <Tab panes={panes({ userQuestionData })} className="tab" />
+        const { userAnswerStatus } = this.props;
+        return <Tab panes={panes({ userAnswerStatus })} />
     }
 }
 
 const panes = (props) => {
-    const { userQuestionData } = props;
+    const { userAnswerStatus } = props;
     
     return [
         {
             menuItem: 'Answered',
             render: () => (
                 <Tab.Pane>
-                    {userQuestionData.unanswered.map(question => (
+                    {userAnswerStatus.unanswered.map(question => (
                         <Card key={question.id} question_id={question.id} unanswered={true}/> 
                     ))}
                 </Tab.Pane>
@@ -37,7 +35,7 @@ const panes = (props) => {
             menuItem: 'Unanswered',
             render: () => (
                 <Tab.Pane>
-                    {userQuestionData.answered.map(question => (
+                    {userAnswerStatus.answered.map(question => (
                         <Segment.Group key={question.id}>
                         <Header as="h4" textAlign="left" block>
                             {question.author} asks:
@@ -62,7 +60,8 @@ const panes = (props) => {
 }
     
 
-function mapStateToProps({ authUser, users, questions }) {
+function mapStateToProps(state) {
+    const { authUser, users, questions } = state;
     const answeredIds = Object.keys(users[authUser].answers);
     const answered = Object.values(questions)
       .filter(question => !answeredIds.includes(question.id))
@@ -72,7 +71,7 @@ function mapStateToProps({ authUser, users, questions }) {
       .sort((a, b) => b.timestamp - a.timestamp);
   
     return {
-      userQuestionData: {
+      userAnswerStatus: {
         answered,
         unanswered
       }

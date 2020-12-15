@@ -1,9 +1,11 @@
 import {
   RECEIVE_QUESTIONS,
-  ADD_ANSWER_TO_QUESTION,
+  SAVE_ANSWER,
   ADD_QUESTION
 } from '../actions/questions';
 
+//Adds new question to state
+//Saves user's vote to question
 export default function questions(state = {}, action) {
   switch (action.type) {
     case RECEIVE_QUESTIONS:
@@ -11,16 +13,16 @@ export default function questions(state = {}, action) {
         ...state,
         ...action.questions
       };
-    case ADD_ANSWER_TO_QUESTION:
-      const { authUser, qid, answer } = action;
+    case SAVE_ANSWER:
+      const { authUser, qid, value } = action;
 
       return {
         ...state,
         [qid]: {
           ...state[qid],
-          [answer]: {
-            ...state[qid][answer],
-            votes: state[qid][answer].votes.concat(authUser)
+          [value]: {
+            ...state[qid][value],
+            votes: state[qid][value].votes.concat(authUser)
           }
         }
       };

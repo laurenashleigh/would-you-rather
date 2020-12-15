@@ -1,5 +1,5 @@
 import { saveQuestionAnswer } from "../utils/api";
-import { addAnswerToQuestion } from '../actions/questions';
+import { saveAnswer } from '../actions/questions';
 
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const ADD_ANSWER_TO_USER = 'ADD_ANSWER_TO_USER';
@@ -12,25 +12,27 @@ export function receiveUsers(users) {
   };
 }
 
-function addAnswerToUser(authUser, qid, answer) {
+function addAnswerToUser(authUser, qid, value) {
   return {
     type: ADD_ANSWER_TO_USER,
     authUser,
     qid,
-    answer
+    value
   };
 }
 
-export default function handleSaveQuestionAnswer(authUser, qid, answer) {
+//Adds new answer to user
+export default function handleAddAnswer(authUser, qid, value) {
   return dispatch => {
-    dispatch(addAnswerToUser(authUser, qid, answer));
-    dispatch(addAnswerToQuestion(authUser, qid, answer));
+    dispatch(addAnswerToUser(authUser, qid, value));
+    dispatch(saveAnswer(authUser, qid, value));
 
-    return saveQuestionAnswer({authUser, qid, answer})
+    return saveQuestionAnswer({authUser, qid, value})
   };
 };
 
-export function addQuestionToUser({ id, author }) {
+//Adds new question to user
+export function saveQuestionToUser({ id, author }) {
   return {
     type: ADD_QUESTION_TO_USER,
     id,

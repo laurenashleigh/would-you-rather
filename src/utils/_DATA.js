@@ -213,7 +213,7 @@ let users = {
     });
   }
   
-  export function _saveQuestionAnswer({ authUser, qid, answer }) {
+  export function _saveQuestionAnswer({ authUser, qid, value }) {
     return new Promise((res, rej) => {
       setTimeout(() => {
         users = {
@@ -222,7 +222,7 @@ let users = {
             ...users[authUser],
             answers: {
               ...users[authUser].answers,
-              [qid]: answer
+              [qid]: value
             }
           }
         };
@@ -231,9 +231,9 @@ let users = {
           ...questions,
           [qid]: {
             ...questions[qid],
-            [answer]: {
-              ...questions[qid][answer],
-              votes: questions[qid][answer].votes.concat([authUser])
+            [value]: {
+              ...questions[qid][value],
+              votes: questions[qid][value].votes.concat([authUser])
             }
           }
         };

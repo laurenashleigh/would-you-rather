@@ -36,6 +36,7 @@ export class Nav extends Component {
                                 icon="log out"
                                 size="mini"
                                 onClick={this.handleLogout}
+                                color="teal"
                             />
                         </Menu.Item>
                     </Menu.Menu>
@@ -45,7 +46,8 @@ export class Nav extends Component {
     }
 }
 
-function mapStateToProps({ users, authUser }) {
+const mapStateToProps = (state) => {
+    const { users, authUser } = state;
     return {
       authUser,
       users

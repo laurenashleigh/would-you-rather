@@ -46,10 +46,10 @@ export class QuestionStat extends Component {
         )
     }
 }
-function mapStateToProps(
-    { authUser, questions },
-    { match, question_id }
-) {
+function mapStateToProps(state, ownProps) {
+    const { authUser, questions } = state;
+    const { match, question_id } = ownProps;
+
     let question;
     if (question_id !== undefined) {
     question = questions[question_id];

@@ -5,6 +5,7 @@ import {
     _saveQuestionAnswer
   } from './_DATA';
   
+  //Fetch users and questions
   export function getInitialData() {
     return Promise.all([_getUsers(), _getQuestions()]).then(
       ([users, questions]) => ({

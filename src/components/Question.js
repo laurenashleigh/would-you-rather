@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Header, Radio, Button } from "semantic-ui-react";
 import { connect } from 'react-redux';
-import handleSaveQuestionAnswer from '../actions/users';
+import handleAddAnswer from '../actions/users';
 import { Link } from 'react-router-dom';
 
 export class Question extends Component {
@@ -13,11 +13,11 @@ export class Question extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const { authUser, question, handleSaveQuestionAnswer } = this.props;
+        const { authUser, question, handleAddAnswer } = this.props;
         const { value } = this.state;
         const qid = question.id
         new Promise ((res, rej) => {
-            handleSaveQuestionAnswer(authUser, qid, value);
+            handleAddAnswer(authUser, qid, value);
             setTimeout(() => res('success', 500));
         }).then(() => {
             this.setState({ value: '' })
@@ -69,7 +69,8 @@ export class Question extends Component {
     }
 }
 
-function mapStateToProps({ authUser }) {
+function mapStateToProps(state) {
+    const { authUser } = state;
     return {
         authUser,
     }
@@ -77,5 +78,5 @@ function mapStateToProps({ authUser }) {
 
 export default connect(
     mapStateToProps,
-    { handleSaveQuestionAnswer }
+    { handleAddAnswer }
 )(Question);

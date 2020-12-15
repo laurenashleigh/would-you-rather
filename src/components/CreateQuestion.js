@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleSaveQuestion } from '../actions/questions';
+import { handleAddQuestion } from '../actions/questions';
 import { Header, Grid, Segment, Form, Divider, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ export class CreateQuestion extends Component {
         const { authUser } = this.props;
         const { optionOne, optionTwo } = this.state;
         new Promise ((res, rej) => {
-            handleSaveQuestion(optionOne, optionTwo, authUser) ;
+            handleAddQuestion(optionOne, optionTwo, authUser) ;
             setTimeout(() => res('success'), 500);
         }).then(() => {
             this.setState({ optionOne: '', optionTwo: '' })
@@ -67,11 +67,12 @@ export class CreateQuestion extends Component {
     }
 }
 
+//Data from Redux store 
 const mapStateToProps = ({ authUser }) => ({
     authUser,
 })
 
 export default connect(
     mapStateToProps,
-    { handleSaveQuestion }
+    { handleAddQuestion }
 )(CreateQuestion);

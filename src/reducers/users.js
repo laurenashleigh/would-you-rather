@@ -4,6 +4,8 @@ import {
   ADD_QUESTION_TO_USER
 } from '../actions/users';
 
+//Saves answer vote to user
+//Saves created question to user
 export default function users(state = {}, action) {
   switch (action.type) {
     case RECEIVE_USERS:

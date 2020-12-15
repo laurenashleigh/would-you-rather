@@ -2,31 +2,18 @@ import React, { Component } from 'react';
 import { Header, Grid, Segment, Image } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import Question from './Question';
-import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Teaser from './Teaser';
+import Preview from './Preview';
 import QuestionStat from './QuestionStat';
 
 const cardTypes = {
     QUESTION: 'QUESTION',
-    TEASER: 'TEASER',
+    PREVIEW: 'PREVIEW',
     RESULT: 'RESULT'
 }
 
 export class Card extends Component {
-    static propTypes = {
-        question: PropTypes.object,
-        author: PropTypes.object,
-        cardType: PropTypes.string,
-        unanswered: PropTypes.bool,
-        question_id: PropTypes.string
-      };
     render() {
-        const { question, cardType, error } = this.props;
-
-        if (error === true) {
-            return <Redirect to="/error" />
-        }
+        const { question, cardType } = this.props;
 
         return (
             <div>
@@ -41,7 +28,7 @@ export class Card extends Component {
                                 </Grid.Column>
                                 <Grid.Column width={10}>
                                     {cardType === cardTypes.QUESTION && <Question question={question}/>}
-                                    {cardType === cardTypes.TEASER && <Teaser question={question}/>}
+                                    {cardType === cardTypes.PREVIEW && <Preview question={question}/>}
                                     {cardType === cardTypes.RESULT && <QuestionStat question={question}/>}
                                 </Grid.Column>
                             </Grid.Row>
@@ -53,26 +40,23 @@ export class Card extends Component {
     }
 }
 
-function mapStateToProps(
-    { users, questions, authUser },
-    { match, question_id }
-  ) {
+//Data from Redux store state
+function mapStateToProps(state, ownProps) {
+    const { users, questions, authUser } = state;
+    const { match, question_id } = ownProps;
     let question,
       author,
-      cardType,
-      error = false;
+      cardType;
     if (question_id !== undefined) {
       question = questions[question_id];
       author = users[question.author];
-      cardType = cardTypes.TEASER;
+      cardType = cardTypes.PREVIEW;
     } else {
       const { question_id } = match.params;
       question = questions[question_id];
       const user = users[authUser];
   
-      if (question === undefined) {
-        error = true;
-      } else {
+      if (question !== undefined) {
         author = users[question.author];
         cardType = cardTypes.QUESTION;
         if (Object.keys(user.answers).includes(question.id)) {
@@ -82,7 +66,6 @@ function mapStateToProps(
     }
   
     return {
-      error,
       question,
       author,
       cardType
