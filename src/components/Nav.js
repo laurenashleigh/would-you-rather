@@ -31,12 +31,11 @@ export class Nav extends Component {
                         <Menu.Item>
                             <Button 
                                 content="Log Out"
-                                labelPosition="right"
-                                basic
-                                compact
-                                icon="log out"
-                                size="mini"
                                 onClick={this.handleLogout}
+                                labelPosition="right"
+                                icon="hand point right outline"
+                                basic
+                                size="mini"
                                 color="teal"
                             />
                         </Menu.Item>

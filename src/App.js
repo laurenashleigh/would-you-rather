@@ -20,7 +20,7 @@ class App extends Component {
     const { authUser } = this.props;
     return (
       <Router>
-        <div className="App" style={{ maxWidth: 550, textAlign: "center" }}>
+        <div className="appMain">
           {authUser === null ? (
             <Route
             render={() => (
@@ -54,7 +54,4 @@ function mapStateToProps(
     };
 };
 
-export default connect(
-  mapStateToProps,
-  { handleInitialData }
-)(App);
+export default connect(mapStateToProps, { handleInitialData })(App);

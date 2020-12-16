@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import {
+    Image,
     Grid,
     Header,
-    Image,
-    Form,
     Button,
+    Form,
   } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { setAuthUser } from '../actions/authUser';
@@ -30,8 +30,8 @@ export class Login extends Component {
         const { users } = this.props;
         return users.map(user => ({
             key: user.id,
-            text: user.name,
             value: user.id,
+            text: user.name,
             image: { avatar: true, src: user.avatarURL }
         }));
     };

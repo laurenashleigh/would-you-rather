@@ -55,10 +55,10 @@ export class Question extends Component {
                     <Form.Field>
                         <Link to="/">
                             <Button 
+                                onClick={this.handleSubmit}
                                 color="teal"
                                 size="tiny"
                                 content="Submit"
-                                onClick={this.handleSubmit}
                                 disabled={!answered}
                             />
                         </Link>

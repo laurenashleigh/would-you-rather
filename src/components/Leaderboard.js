@@ -53,16 +53,17 @@ function mapStateToProps(state) {
     const { users } = state;
     const scoreData = Object.values(users)
     .map(user => ({
-        id: user.id,
         name: user.name,
+        id: user.id,
         avatarURL: user.avatarURL,
         answered: Object.values(user.answers).length,
         asked: user.questions.length,
         score: Object.values(user.answers).length + user.questions.length
     }))
+    .slice(0, 3)
     .sort((a, b) => a.score - b.score)
-    .reverse()
-    .slice(0, 3);
+    .reverse();
+    
     return {
         scoreData
     };
